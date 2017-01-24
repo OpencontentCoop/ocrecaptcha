@@ -103,6 +103,8 @@ class OcReCaptchaType extends eZDataType
         ){
             return eZInputValidator::STATE_ACCEPTED;
         }
+
+        $attribute->setValidationError(ezpI18n::tr('extension/ocrecaptcha', 'Invalid input'));
         return eZInputValidator::STATE_INVALID;
     }
 
@@ -131,6 +133,8 @@ class OcReCaptchaType extends eZDataType
         ){
             return eZInputValidator::STATE_ACCEPTED;
         }
+
+        $attribute->setValidationError(ezpI18n::tr('extension/ocrecaptcha', 'Invalid input'));
         return eZInputValidator::STATE_INVALID;
     }
 
