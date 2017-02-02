@@ -176,7 +176,7 @@ class OcReCaptchaType extends eZDataType
      */
     public static function validateCaptcha( $gRecaptchaResponse, $privateKey )
     {
-        $recaptcha = new \ReCaptcha\ReCaptcha( $privateKey );
+        $recaptcha = new \ReCaptcha\ReCaptcha( $privateKey, new OcReCaptchaCurlPost() );
         $result = $recaptcha->verify(
             $gRecaptchaResponse,
             $_SERVER['REMOTE_ADDR']
