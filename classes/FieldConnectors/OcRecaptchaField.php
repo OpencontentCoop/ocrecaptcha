@@ -29,6 +29,6 @@ class OcRecaptchaField extends FieldConnector
                 throw new Exception("Invalid ReCaptcha");
             }
         }
-        return null;
+        return 'ok';
     }
 }
