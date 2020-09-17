@@ -129,11 +129,13 @@ class OcReCaptchaType extends eZDataType
      */
     public function validateCollectionAttributeHTTPInput( $http, $base, $attribute )
     {
-        if( self::validateCaptcha(
-            $http->postVariable( 'g-recaptcha-response' ),
-            $attribute->contentClassAttribute()->attribute( self::PRIVATE_KEY_FIELD ) )
-        ){
-            return eZInputValidator::STATE_ACCEPTED;
+        if ($http->hasPostVariable('g-recaptcha-response')){
+            if( self::validateCaptcha(
+                $http->postVariable( 'g-recaptcha-response' ),
+                $attribute->contentClassAttribute()->attribute( self::PRIVATE_KEY_FIELD ) )
+            ){
+                return eZInputValidator::STATE_ACCEPTED;
+            }
         }
 
         $attribute->setValidationError(ezpI18n::tr('extension/ocrecaptcha', 'Invalid input'));
